@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-
+import styled from 'styled-components'
+import {ButtonContainer} from './Button'
 import logo from "../logo.svg"
 
 class Navbar extends Component {
@@ -8,7 +9,7 @@ class Navbar extends Component {
     return (
 
 
-      <nav className="navbar navbar-expand-sm bg-primary navbar-dark px-small-5">
+      <NavWrapper className="navbar navbar-expand-sm navbar-dark px-small-5">
       {/* bg-primary required from bootstrap to display navbar with style*/}
 
       {/*
@@ -28,18 +29,33 @@ class Navbar extends Component {
 
           <li className="nav-item ml-5">
               <Link to="/" className="nav-link">
-                Products
+                products
                </Link>
           </li>
         </ul>
         {/*margin left auto sent button to far left using bootstrap*/}
         <Link to="/cart" className="ml-auto">
-          <button><i className="fas fa-cart-plus"/>My Cart</button>
+          <ButtonContainer>
+          <span><i className="fas fa-cart-plus"/></span>
+          My Cart</ButtonContainer>
         </Link>
 
-      </nav>
+      </NavWrapper>
     );
   }
 }
+
+const NavWrapper = styled.nav`
+
+background:var(--mainblue);
+.nav-link{
+  color:var(--mainWhite) !important;
+  font-size:1.3rem;
+  text-transform:capitalize;
+}
+
+`
+
+
 
 export default Navbar;
