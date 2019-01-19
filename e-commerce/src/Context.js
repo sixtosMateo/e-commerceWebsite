@@ -9,6 +9,7 @@ const ProductContext = React.createContext();
 class ProductProvider extends Component {
   state={
     products: [],
+    // not destructuring because we are not changing the values here
     detailProduct: detailProduct
   }
 
@@ -38,8 +39,8 @@ class ProductProvider extends Component {
 
   }
 
-  addToCart =()=>{
-    console.log("hello from cart")
+  addToCart =(id)=>{
+    console.log(id)
   }
 
   render() {
