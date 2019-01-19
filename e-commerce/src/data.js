@@ -1,4 +1,4 @@
-
+//img/ is required to grab the image from the public folder
 export const storeProducts = [
   {
     id: 1,

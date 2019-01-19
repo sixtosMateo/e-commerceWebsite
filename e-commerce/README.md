@@ -19,3 +19,4 @@ FONT AWESOME
 STYLED COMPONENT
 https://www.styled-components.com/
 npm install --save styled-components
+import styled from 'styled-components';

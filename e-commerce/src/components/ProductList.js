@@ -4,12 +4,9 @@ import Title from './Title';
 import {ProductConsumer} from '../Context';
 
 class ProductList extends Component {
-  state={
-    products: []
-  }
 
   render() {
-    console.log(this.state.products)
+    
     return (
       <div>
 
