@@ -11,6 +11,28 @@ class ProductProvider extends Component {
     products: [],
     detailProduct: detailProduct
   }
+
+  componentDidMount(){
+    this.setProducts();
+  }
+
+  setProducts=()=>{
+
+    // we are copying the values not referencing storeProducts
+    // getting a new set of values rather than copying them
+    let products =[];
+
+    storeProducts.forEach(item=>{
+      const singleItem = {...item}
+      products = [...products, singleItem]
+    })
+
+    this.setState(()=>{
+      return {products}
+    })
+  }
+
+
   handleDetail=()=>{
     console.log("hello from detail")
 
