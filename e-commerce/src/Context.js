@@ -12,7 +12,7 @@ class ProductProvider extends Component {
     // not destructuring because we are not changing the values here
     detailProduct: detailProduct,
     cart:[],
-    modelOpen: true,
+    modelOpen: false,
     modelProduct: detailProduct
   }
 
