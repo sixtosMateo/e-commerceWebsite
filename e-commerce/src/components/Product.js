@@ -15,7 +15,10 @@ class Product extends Component {
           <ProductConsumer>
           {(value)=>{
             return(
-              <div className="img-container p-5" onClick={()=>{value.handleDetail(id)}}>
+              <div className="img-container p-5" onClick={()=>{
+                value.handleDetail(id);
+                value.openModel(id);
+              }}>
                 <Link to="/details">
                   <img src={img} alt="product" className="card-img-top"/>
                 </Link>

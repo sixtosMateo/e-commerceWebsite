@@ -11,7 +11,9 @@ class ProductProvider extends Component {
     products: [],
     // not destructuring because we are not changing the values here
     detailProduct: detailProduct,
-    cart:[]
+    cart:[],
+    modelOpen: true,
+    modelProduct: detailProduct
   }
 
   componentDidMount(){
@@ -64,12 +66,26 @@ class ProductProvider extends Component {
     });
   }
 
+  openModel=(id)=>{
+    const product = this.getItem(id);
+    this.setState(()=>{
+      return { modelProduct:product, modelOpen:true}
+    })
+  }
+  closeModel=()=>{
+    this.setState(()=>{
+      return {modelOpen:false}
+    })
+  }
+
   render() {
     return (
       <ProductContext.Provider value={{
         ...this.state,
         handleDetail: this.handleDetail,
-        addToCart: this.addToCart
+        addToCart: this.addToCart,
+        closeModel:this.closeModel,
+        openModel:this.openModel
 
       }}>
         {this.props.children}

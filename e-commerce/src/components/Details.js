@@ -51,7 +51,8 @@ class Details extends Component {
                   cart
                   disabled= {inCart?true:false}
                   onClick={()=>{
-                    value.addToCart(id)
+                    value.addToCart(id);
+                    value.openModel(id);
                   }}
                   >
                   {
