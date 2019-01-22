@@ -11,7 +11,7 @@ class ProductProvider extends Component {
     products: [],
     // not destructuring because we are not changing the values here
     detailProduct: detailProduct,
-    cart:storeProducts,
+    cart: [],
     modelOpen: false,
     modelProduct: detailProduct,
     cartSubtotal:0,
