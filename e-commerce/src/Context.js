@@ -83,13 +83,47 @@ class ProductProvider extends Component {
     })
   }
 
+  // increment and decrement can be one method and check the status of button
+  // two functions is bad programming practice
   increment=(id)=>{
-    console.log("increment")
+    let tempCart = [...this.state.cart]
+    const selectedItem = tempCart.find(item=>item.id===id);
+
+    const index = tempCart.indexOf(selectedItem)
+
+    const item  = tempCart[index]
+
+    item.count = item.count + 1
+    item.total = item.count * item.price
+
+    this.setState(()=>{
+      return {cart:[...tempCart]}},
+
+      ()=>{this.addTotal()})
 
   }
 
   decrement=(id)=>{
-    console.log("decrement")
+    let tempCart = [...this.state.cart]
+    const selectedItem = tempCart.find(item=>item.id===id);
+
+    const index = tempCart.indexOf(selectedItem)
+
+    const item  = tempCart[index]
+
+    item.count = item.count-1;
+
+    if(item.count ==0){
+      this.removeItem(id)
+    }
+    else{
+      item.total = item.count * item.price
+
+      this.setState(()=>{
+        return {cart:[...tempCart]}},
+        ()=>{this.addTotal()})
+    }
+
 
   }
 
@@ -103,6 +137,7 @@ class ProductProvider extends Component {
     // remove item based on the index
     let removedItem = tempProducts[index]
 
+    // this the overall products and setting the values to defaut
     removedItem.inCart = false
     removedItem.count = 0
     removedItem.total = 0
