@@ -92,13 +92,40 @@ class ProductProvider extends Component {
     console.log("decrement")
 
   }
-  removeItem=(id)=>{
-    console.log("removeItem")
+
+  removeItem = id =>{
+    let tempProducts = [...this.state.products];
+    let tempCart = [...this.state.cart];
+
+    tempCart = tempCart.filter(item => item.id !== id)
+    // looking for indexOf id item
+    const index =  tempProducts.indexOf(this.getItem(id))
+    // remove item based on the index
+    let removedItem = tempProducts[index]
+
+    removedItem.inCart = false
+    removedItem.count = 0
+    removedItem.total = 0
+
+    this.setState(()=>{
+      return {
+        cart:[...tempCart],
+        product:[...tempProducts]
+      }
+    },()=> {this.addTotal()}
+  )
   }
 
   clearCart=()=>{
-    console.log("clearCart")
-
+    this.setState(()=>{
+      return {cart:[]}
+    },()=>{
+      //callback function
+      // new originalfresh copy of all the items rather than referencing
+      // all the modify object are set to default
+      this.setProducts();
+      this.addTotal();
+    });
   }
 
   addTotal=()=>{
