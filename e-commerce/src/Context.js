@@ -65,7 +65,8 @@ class ProductProvider extends Component {
     this.setState(()=>{
       return { products:tempProducts, cart:[...this.state.cart, product] }
     }, ()=>{
-      console.log(this.state);
+      // this is a callback method that iterates/map through cart and change the subtotal, tax, total
+      this.addTotal()
     });
   }
 
@@ -97,6 +98,23 @@ class ProductProvider extends Component {
 
   clearCart=()=>{
     console.log("clearCart")
+
+  }
+
+  addTotal=()=>{
+    let subTotal = 0
+    this.state.cart.map(item=>(subTotal += item.total));
+    const tempTax = subTotal * .0975;
+    const tax = parseFloat(tempTax.toFixed(2));
+    const total = subTotal + tax;
+
+    this.setState(()=>{
+      return{
+      cartSubtotal:subTotal,
+      cartTax:tax,
+      cartTotal:total
+    }
+    })
 
   }
 
